@@ -35,3 +35,13 @@
 
 # نرجع ل calculet.php ونبدأ الكود
 
+# الحل
+https://youtu.be/tdCwo4jmni0
+
+https://youtu.be/f29U-OZjbVY
+
+https://youtu.be/CL17W75f43o
+
+https://youtu.be/ex3otP0MbqE
+
+https://youtu.be/1soHyPeHtlo
