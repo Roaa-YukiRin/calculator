@@ -16,3 +16,9 @@
 
 # نعمل ملف جديد ونسميه culculate
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b959e4df-3033-4da9-944b-e6b7891748b0" />
+
+# نفتح الملف بvesuale cude
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/597b3c73-c5ed-443f-9b9e-034f4b910d5e" />
+
+# نضيف ملف ونسميه calculet.php
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/694e611f-3909-40d9-a22d-9203b08c2053" />
