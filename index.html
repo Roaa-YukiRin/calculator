@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة بسيطة PHP</title>
+    
+    <style>
+
+       /* ===================================== */
+        /* التنسيقات العامة للصفحة (BODY) */
+         /* ===================================== */
+        body{
+         /* تعيين صورة الخلفية العامة للصفحة */
+         background-image: url('images/miri.jpg'); 
+         /* ضمان تغطية الصورة لكامل مساحة الخلفية */
+         background-size: cover;
+        /* تثبيت الصورة بحيث لا تتحرك عند التمرير */
+        background-attachment: fixed;
+        /* ضمان أن الجسم يملأ الشاشة بالكامل لتطبيق الخلفية والتوسيط */
+        min-height: 100vh; 
+         /* استخدام Flexbox لتوسيط الآلة الحاسبة */
+         display: flex;
+         /* توسيط الآلة الحاسبة أفقياً */
+         justify-content: center;
+          /* ترتيب العناصر بترتيبها الطبيعي (العنوان أولاً ثم الآلة الحاسبة) */
+        flex-direction: column;
+         /* توسيط الآلة الحاسبة عمودياً */
+         align-items: center;
+         padding: 20px;                         
+          /* إضافة مسافة عامة حول محتوى الصفحة. */
+        font-family: 'Arial', sans-serif;      
+         /* تعيين خط عام واضح. */
+        }
+
+               /* ===================================== */
+                /* تنسيق العنوان (H1) */
+             /* ===================================== */
+        h1 {
+            /* تعيين لون النص ليكون أبيض */
+            color: white;
+            /* زيادة حجم الخط ليكون مميزاً */
+            font-size: 3em; 
+            /* إضافة ظل النص (محيط أسود) لخلق تأثير الحافة. الظل موزع في 4 اتجاهات لإبراز الحافة. */
+            text-shadow: 
+                -2px -2px 0 #000, 
+                 2px -2px 0 #000, 
+                -2px 2px 0 #000, 
+                 2px 2px 0 #000;
+            /* مسافة سفلية لفصل العنوان عن الآلة الحاسبة */
+            margin-bottom: 30px; 
+             text-align: center;
+        }
+
+
+        /* ===================================== */
+        /* حاوية الآلة الحاسبة (CALC) */
+        /* ===================================== */
+        .calc{
+             background-image: url('images/THETHOUSANDSUNNY.jpg'); 
+           /*رابط الصورة*/
+           background-size: cover;
+            /*تغطية كاملة للخلفية*/
+            background-position: center; 
+            /* توسيط صورة الخلفية */
+          
+            /* ترتيب العناصر الداخلية*/
+            padding: 25px;
+           /* تطبيق حواف دائرية كبيرة (4rem) على خلفية الآلة الحاسبة */
+            border-radius: 2rem;
+            /* إضافة ظل مميز للحاوية لإبرازها */
+           box-shadow: 20px 15px 15px rgb(23, 104, 196); 
+
+            width: 90%;                           
+              /* عرض 90% ليكون متجاوباً. */
+            max-width: 400px;                      
+             /* تحديد أقصى عرض. */
+            min-height: 500px; 
+
+            display: flex; 
+            /* ترتيب العناصر الداخلية*/
+            flex-direction: column;
+            /*ترتيب عامودي*/
+            justify-content: space-between;
+             /* توزيع المحتوى بين الشاشة والأزرار وزر اليساوي */
+        }
+
+         /* ===================================== */
+        /* شاشة العرض (DISPLAY) */
+        /* ===================================== */
+        #display{
+             width: 100%;
+              /* تعيين عرض شاشة العرض لملء الحاوية بالكامل. */
+            height: 70px; 
+            /* تعيين ارتفاع ثابت لشاشة العرض بمقدار 70 بكسل. */
+            text-align: right;
+             /* محاذاة النص داخل الحقل إلى اليمين، وهو مناسب للغة العربية والأرقام. */
+            font-size: 2.5em; 
+            /* تعيين حجم الخط ليكون كبيراً وواضحاً (2.5 ضعف حجم الخط الأساسي). */
+            padding: 10px; 
+            /* إضافة مسافة داخلية (حشوة) حول النص داخل الشاشة لتحسين المظهر. */
+            border: 1px solid #ccc; 
+            /* إضافة حدود رقيقة بلون رمادي فاتح حول الشاشة. */
+            box-sizing: border-box; 
+            /* التأكد من أن الـ padding والـ border يتم احتسابهما ضمن الـ width والـ height الكليين. */
+            border-radius: 5px; 
+            /* تطبيق حواف دائرية خفيفة على زوايا الشاشة. */
+            /* مسافة بين شاشة الإدخال وحاوية الأزرار */
+            margin-bottom: 25px; 
+            /* إضافة مسافة خارجية أسفل الشاشة لفصلها عن الأزرار. */
+            background-color: #a4dce3;              /* اللون الأزرق السماوي لخلفية الشاشة. */
+            color: #111;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); /* ظل داخلي لإعطاء عمق للشاشة. */
+        }
+        
+        .minpinput{
+            background-color: #a4dce3; 
+            /* خلفية باللون الأزرق السماوي الفاتح  */
+            width: 24rem;
+            height: 6rem;
+              /* تطبيق حواف دائرية كبيرة (4rem) على خلفية الآلة الحاسبة */
+            border-radius: 4rem;
+                /* ترتيب العناصر الداخلية*/
+            padding: 3px;
+            gap: 20px;
+            /*المسافة*/
+             margin-bottom: 20px;                  
+              /* مسافة لفصلها عن زر اليساوي. */
+        }
+        
+        /* ===================================== */
+        /* حاوية الأزرار الرئيسية (BUTUM) */
+        /* ===================================== */
+        
+        .butum{
+            display: grid;
+            /* تفعيل نظام CSS Grid */
+             grid-template-columns: repeat(4, 1fr);
+            /*ترتيب الأزاربر*/
+            gap: 15px;
+            /*المسافة*/
+            /* السماح للشبكة بأخذ أكبر قدر ممكن من المساحة العمودية المتبقية */
+            flex-grow: 1; 
+            /* السماح للحاوية بالتمدد لملء أي مساحة رأسية متبقية داخل الحاوية الأم (calc). */
+            margin-bottom: 25px;                  
+              /* مسافة لفصلها عن زر اليساوي. */
+        }
+
+        /* تنسيق الأزرار المشتركة (.numbtn, .calbtn) */
+        .numbtn, .calbtn {
+            padding: 15px;                         
+             /* مساحة داخلية للزر. */
+            font-size: 1.5em;                       
+            /* حجم الخط داخل الزر. */
+            border-radius: 12px;                   
+             /* حواف دائرية أكبر. */
+            border: none;                           
+            /* إزالة الحدود الافتراضية للزر. */
+            cursor: pointer;                       
+             /* تحويل المؤشر إلى يد عند المرور فوق الزر (للدلالة على أنه تفاعلي). */
+            transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s; 
+            /* تأثيرات سلسة عند التغيير. */
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3); 
+            /* ظل سفلي للأزرار لإعطاء تأثير ثلاثي الأبعاد. */
+            line-height: 1;                         
+            /* لضمان توسيط النص عمودياً داخل الزر. */
+        }
+        
+        /* تأثير الضغط على الزر (Active State) */
+        .numbtn:active, .calbtn:active, .equalbtn:active {
+            transform: translateY(4px);           
+              /* عند الضغط (Active)، ينزل الزر بمقدار 4px ليحاكي الضغط. */
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);  
+              /* إزالة الظل السفلي عند الضغط. */
+        }
+        
+       /* تنسيق أزرار الأرقام */
+        .numbtn {
+            background-color: rgba(31, 193, 193, 0.9);
+             /* أبيض شفاف قليلًا. */
+            color: #333;                            
+            /* لون نص رمادي داكن. */
+        }
+        .numbtn:hover {
+            background-color: rgba(255, 255, 255, 1); 
+            /* يصبح أبيض بالكامل عند مرور المؤشر. */
+        }
+
+        /* تنسيق زر المسح (C) */
+        input[value="C"] { 
+            background-color: #f44336c5;              
+            /* لون أحمر مميز. */
+            color: white;                         
+              /* نص أبيض. */
+            font-weight: bold;                     
+             /* خط عريض. */
+        }
+        input[value="C"]:hover {
+            background-color: #d43108;  
+                        /* لون أحمر أغمق عند مرور المؤشر. */
+            color: rgb(235, 229, 229);
+        }
+
+        /* تنسيق أزرار العمليات الحسابية */
+        .calbtn {
+            background-color: #ffeb3bda;              
+            /* لون أصفر (ثيم ون بيس). */
+            color: #333;
+            font-weight: bold;
+        }
+        .calbtn:hover {
+            background-color: #fccf04fd;              /* لون أصفر أغمق عند مرور المؤشر. */
+        }
+
+
+        /* ===================================== */
+        /* تنسيق زر اليساوي (=) */
+        /* ===================================== */
+        .equalbtn {
+            width: 100%;                            /* ملء عرض الحاوية. */
+            background-color: #ff9900c3;              /* لون برتقالي. */
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #e68a00;            /* ظل سفلي للزر البرتقالي. */
+            transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+        }
+        .equalbtn:hover {
+            background-color: #f4983b;
+        }
+     /* ===================================== */
+        /* تنسيقات خاصة بالتجاوب (لشاشات العرض الصغيرة) */
+        /* ===================================== */
+        @media (max-width: 480px) { 
+            /* تطبيق التنسيقات أدناه عندما يكون عرض الشاشة 480 بكسل أو أقل. */
+            .calc {
+                padding: 15px;      
+                /* تقليل المساحة الداخلية لحاوية الآلة الحاسبة. */
+            }
+            .butum {
+                gap: 10px;         
+                 /* تقليل المسافة بين الأزرار. */
+            }
+            .numbtn, .calbtn, .equalbtn {
+                font-size: 1.3em;   
+                /* تقليل حجم الخط داخل الأزرار. */
+                padding: 12px;     
+                 /* تقليل المساحة الداخلية للأزرار. */
+            }
+        }
+    </style>
+</head>
+<body >
+      <!-- عنوان كبير يظهر في أعلى الصفحة -->
+    <h1> الة حاسبة ون بيس</h1>
+
+ <!-- الحاوية الرئيسية للآلة الحاسبة -->
+    <div class="calc">
+
+         <!-- هذا النموذج هو الذي سيتم إرساله عند الضغط على زر '=' -->
+    <form action="" method="post">
+
+        <!-- شاشة العرض/النتيجة -->
+        <input type="text" class="minpinput">
+        <br>
+        
+
+         <!-- حاوية الأزرار التي تستخدم نظام Grid -->
+        <div class="butum">
+
+        <input type="submit" class="numbtn" name="num" value ="3">
+         <!-- زر الرقم 3. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+        <input type="submit" class="numbtn" name="num" value ="2">
+         <!-- زر الرقم 2. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+         <input type="submit" class="numbtn" name="num" value ="1">
+          <!-- زر الرقم 1. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+          <input type="submit" class="calbtn" name="op" value ="+">
+           <!-- زر العملية (+) . اسمه op -->
+
+        <input type="submit" class="numbtn" name="num" value ="6">
+          <!-- زر الرقم 6. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+        <input type="submit" class="numbtn" name="num" value ="5">
+          <!-- زر الرقم 5. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+         <input type="submit" class="numbtn" name="num" value ="4">
+          <!-- زر الرقم 4. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+          <input type="submit" class="calbtn" name="op"value ="-">
+        <!-- زر العملية (-) -->
+
+        <input type="submit" class="numbtn" name="num" value ="9">
+          <!-- زر الرقم 9. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+        <input type="submit" class="numbtn" name="num" value ="8">
+          <!-- زر الرقم 8. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+         <input type="submit" class="numbtn" name="num" value ="7">
+          <!-- زر الرقم 7. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+          <input type="submit" class="calbtn" name="op"value ="*">
+       <!-- زر العملية (*) -->
+
+        <input type="submit" class="numbtn"  name="delet" value ="C">
+         <!-- زر "C" للمسح/الحذف. اسمه delet -->
+        <input type="submit" class="numbtn" name="num" value ="0">
+          <!-- زر الرقم 0. نوعه submit (سيقوم بإرسال النموذج عند الضغط عليه)، اسمه num -->
+         <input type="submit" class="numbtn"  name="flot" value =".">
+          <!-- زر الفاصلة العشرية (.). اسمه flot -->
+          <input type="submit" class="calbtn" name="op" value ="/">
+            <!-- زر العملية (/) -->
+        </div>
+
+        <input type="submit" class="equalbtn"  name="equal" value = "=">
+        <!-- زر اليساوي (=) - نوعه submit لإرسال النموذج إلى PHP. اسمه equal -->
+    </form>
+    </div>
+
+</body>
+</html>
