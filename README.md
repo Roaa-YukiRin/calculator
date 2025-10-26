@@ -26,7 +26,8 @@
 #  الخطوة التالية نبحث عن xampp ونفتحه
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/71c88f28-2cd3-4ea4-a001-b0876396c0fd" />
-# ونشغل Apach & mysql
+
+#  ونشغل Apach & mysql
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9782e7f8-f889-42a8-aa41-c24b272faec5" />
 
 # نفتح admine 
