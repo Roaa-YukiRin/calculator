@@ -22,3 +22,15 @@
 
 # نضيف ملف ونسميه calculet.php
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/694e611f-3909-40d9-a22d-9203b08c2053" />
+
+#  الخطوة التالية نبحث عن xampp ونفتحه
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/71c88f28-2cd3-4ea4-a001-b0876396c0fd" />
+# ونشغل Apach & mysql
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9782e7f8-f889-42a8-aa41-c24b272faec5" />
+
+# نفتح admine 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a6625cb4-4ad1-4553-b7bf-bef67a4b4365" />
+
+# نرجع ل calculet.php ونبدأ الكود
+
